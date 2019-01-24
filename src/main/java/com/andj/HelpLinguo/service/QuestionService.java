@@ -50,6 +50,8 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
+    public Optional<Question> findById(int question_id) { return questionRepository.findById(question_id); }
+
     public Question saveQuestion(Question question) {
         return questionRepository.save(question);
     }

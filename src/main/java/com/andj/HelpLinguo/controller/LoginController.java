@@ -26,6 +26,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Controller
@@ -231,8 +232,11 @@ public class LoginController {
     }
 
     @RequestMapping(value="/admin/answer", method=RequestMethod.GET)
-    public ModelAndView showAnswer(){
+    public ModelAndView showAnswer(@RequestParam("id") int id) {
+        Optional<Question> question = questionService.findById(id);
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("title", question.get().getTitle());
+        modelAndView.addObject("question_text", question.get().getText());
         modelAndView.setViewName("/admin/answer");
         return modelAndView;
     }
