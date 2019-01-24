@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Linguo Helper</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/admin/home}">Home</a>
+    <a th:href="@{/browse}">Browse Questions</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/contact}">Contact</a>
+    <div th:remove="tag" th:utext="${info}"></div>
+    <div th:remove="tag" th:utext="${messages}"></div>
+    <div th:remove="tag" th:utext="${logout}"></div>
+    <div class="search-container">
+        <form action="#" th:action="@{/search}" method="post">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div th:if="${not #lists.isEmpty(questions)}">
+                <h2>Asked questions</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Title</th>
+                        <th>Asked by</th>
+                        <th>Tags</th>
+                    </tr>
+                    <tr th:each="q : ${questions}">
+                        <td><a th:href="@{/admin/answer(id=${q.question.id})}" th:text="${q.question.title}"></a></td>
+                        <td th:text="${q.question.user.name + ' ' + q.question.user.lastName}"></td>
+                        <td th:text="${q.tags}"></td>
+                    </tr>
+                </table>
+            </div>
+            <form autocomplete="off" action="#" th:action="@{/admin/ask}"
+                  method="get" class="form-horizontal"
+                  role="form">
+                <input type="submit" class="btn btn-primary btn-block" value="Ask a question"/>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

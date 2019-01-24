@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/admin/home}">Home</a>
+    <a th:href="@{/browse}">Browse Questions</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/contact}">Contact</a>
+    <a th:href="@{/admin/info}">Update Info</a>
+    <a th:href="@{/admin/messages}">Messages</a>
+    <div class="search-container">
+        <form action="#" th:action="@{/search}" method="post">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form autocomplete="off" action="#" th:action="@{/admin/info}"
+                  th:object="${userInfo}" method="post" class="form-horizontal"
+                  role="form">
+                <h2>Info Form</h2>
+                <select th:field="*{lang1}" class="form-control">
+                    <option th:value="English">English</option>
+                    <option th:value="Polish">Polish</option>
+                    <option th:value="Russian">Russian</option>
+                    <option th:value="Ukrainian">Ukrainian</option>
+                </select><br/>
+                <select th:field="*{lang2}" class="form-control">
+                    <option th:value="English">English</option>
+                    <option th:value="Polish">Polish</option>
+                    <option th:value="Russian">Russian</option>
+                    <option th:value="Ukrainian">Ukrainian</option>
+                </select><br/>
+                <input type="file" th:field="*{avatar}"
+                       placeholder="Choose image" class="form-control"/>
+                <button type="submit" class="btn btn-primary btn-block">Update Info</button>
+
+                <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

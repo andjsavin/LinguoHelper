@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Asq a question</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/ask.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/admin/home}">Home</a>
+    <a th:href="@{/browse}">Browse Questions</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/contact}">Contact</a>
+    <a th:href="@{/admin/info}">Update Info</a>
+    <a th:href="@{/admin/messages}">Messages</a>
+    <div class="search-container">
+        <form action="#" th:action="@{/search}" method="post">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+<div class="container">
+    <div class="row">
+        <form autocomplete="off" action="#" th:action="@{/admin/ask}"
+              th:object="${question}" method="post" class="form-horizontal"
+              role="form">
+            <h2>Question</h2>
+            <input type="text" th:field="*{title}" id="title"
+                   placeholder="Title" class="form-control"/>
+            <div class="textarea-container">
+                <textarea id="textArea" th:field="*{text}" placeholder="Text" class="form-control" rows="20"></textarea>
+            </div>
+            <div class="tags">
+                <div class="tag1">
+                    <input type="text" th:value="${tag1}" id="tag1" placeholder="Tag" class="form-control" name="tag1"
+                           style="width: 19%">
+                </div>
+                <div class="tag2">
+                    <input type="text" th:value="${tag2}" id="tag2" placeholder="Tag" class="form-control" name="tag2"
+                           style="width: 19%; margin-left: 1.25%;">
+                </div>
+                <div class="tag3">
+                    <input type="text" th:value="${tag3}" id="tag3" placeholder="Tag" class="form-control" name="tag3"
+                           style="width: 19%; margin-left: 1.25%;">
+                </div>
+                <div class="tag4">
+                    <input type="text" th:value="${tag4}" id="tag4" placeholder="Tag" class="form-control" name="tag4"
+                           style="width: 19%; margin-left: 1.25%;">
+                </div>
+                <div class="tag5">
+                    <input type="text" th:value="${tag5}" id="tag5" placeholder="Tag" class="form-control" name="tag5"
+                           style="width: 19%; margin-left: 1.25%;">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Ask</button>
+
+            <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
