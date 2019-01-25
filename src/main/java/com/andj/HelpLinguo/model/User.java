@@ -50,4 +50,6 @@ public class User {
     private UserInfo userInfo;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Question> questions;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Answer> answers;
 }

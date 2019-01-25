@@ -139,3 +139,7 @@ html, body {
 .tags input {
     float: left;
 }
+
+.question-head input, select {
+    float: left;
+}

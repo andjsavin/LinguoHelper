@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Linguo Helper</title>
+    <title>Browse questions</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,18 +30,34 @@
 <div class="container">
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span>Asked Questions</span>
+                <form>
+                    <select>
+                        <option disabled selected="selected">Sort By</option>
+                        <option th:value="Views">Views</option>
+                        <option th:value="Language">Language</option>
+                        <option th:value="Answers">Answers</option>
+                        <option th:value="Date">Date</option>
+                    </select>
+                    <input type="submit" value="Sort">
+                </form>
+            </div>
             <div th:if="${not #lists.isEmpty(questions)}">
-                <h2>Asked questions</h2>
                 <table class="table table-striped">
                     <tr>
                         <th>Title</th>
+                        <th>Language</th>
                         <th>Asked by</th>
                         <th>Tags</th>
+                        <th>Views</th>
                     </tr>
                     <tr th:each="q : ${questions}">
                         <td><a th:href="@{/admin/answer(id=${q.question.id})}" th:text="${q.question.title}"></a></td>
+                        <td th:text="${q.question.language}"></td>
                         <td th:text="${q.question.user.name + ' ' + q.question.user.lastName}"></td>
                         <td th:text="${q.tags}"></td>
+                        <td th:text="${q.question.views}"></td>
                     </tr>
                 </table>
             </div>

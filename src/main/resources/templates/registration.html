@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Registration Form</title>
+    <title>Registration</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,9 +39,9 @@
                 <input type="text" th:field="*{lastName}"
                        placeholder="Last Name" class="form-control"/>
                 <select th:field="*{country}" class="form-control">
-                    <option th:value="English">England</option>
-                    <option th:value="Polish">Poland</option>
-                    <option th:value="Russian">Ukraine</option>
+                    <option th:value="England">England</option>
+                    <option th:value="Poland">Poland</option>
+                    <option th:value="Ukraine">Ukraine</option>
                 </select><br/>
                 <label
                         th:if="${#fields.hasErrors('email')}" th:errors="*{email}"

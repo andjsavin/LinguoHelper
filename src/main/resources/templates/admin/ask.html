@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Asq a question</title>
+    <title>Ask a question</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/ask.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,8 +31,15 @@
               th:object="${question}" method="post" class="form-horizontal"
               role="form">
             <h2>Question</h2>
-            <input type="text" th:field="*{title}" id="title"
-                   placeholder="Title" class="form-control"/>
+            <div class="question-head">
+                <input type="text" th:field="*{title}" id="title" style="width: 80%"
+                       placeholder="Title" class="form-control"/>
+                <select th:field="*{language}" id="language" style="width: 19%; margin-left: 1%;" class="form-control">
+                    <option th:value="English">English</option>
+                    <option th:value="Polish">Polish</option>
+                    <option th:value="Ukrainian">Ukrainian</option>
+                </select>
+            </div>
             <div class="textarea-container">
                 <textarea id="textArea" th:field="*{text}" placeholder="Text" class="form-control" rows="20"></textarea>
             </div>

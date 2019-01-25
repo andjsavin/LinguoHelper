@@ -13,6 +13,7 @@ import java.util.*;
 public class QuestionService {
 
     private final TagRepository tagRepository;
+    private final AnswerRepository answerRepository;
     private QuestionRepository questionRepository;
     private UserInfoRepository userInfoRepository;
     private UserRepository userRepository;
@@ -25,12 +26,14 @@ public class QuestionService {
                        UserInfoRepository userInfoRepository,
                        QuestionRepository questionRepository,
                        TagRepository tagRepository,
+                       AnswerRepository answerRepository,
                        BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.userInfoRepository = userInfoRepository;
         this.questionRepository = questionRepository;
         this.tagRepository = tagRepository;
+        this.answerRepository = answerRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -42,8 +45,18 @@ public class QuestionService {
                 questions.add(all.get(i));
             }
         }
-        System.out.println();
         return questions;
+    }
+
+    public List<Answer> findAnswersByUser(int id) {
+        List<Answer> all = answerRepository.findAll();
+        List<Answer> answers = new ArrayList<Answer>();
+        for (int i = 0; i < all.size(); i++) {
+            if (all.get(i).getUser().getId() == id) {
+                answers.add(all.get(i));
+            }
+        }
+        return answers;
     }
 
     public List<Question> findAll() {
@@ -71,4 +84,8 @@ public class QuestionService {
     public Tag saveTag(Tag tag){ return tagRepository.save(tag);}
 
     public List<Tag> findAllByQuestionId(int question_id) { return tagRepository.findAllByQuestionId(question_id);}
+
+    public List<Answer> findAllAnswersByQuestionId(int question_id) { return answerRepository.findAllByQuestionId(question_id); }
+
+    public Answer saveAnswer(Answer answer) {return answerRepository.save(answer);}
 }

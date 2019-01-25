@@ -2,10 +2,7 @@ package com.andj.HelpLinguo.controller;
 
 import javax.validation.Valid;
 
-import com.andj.HelpLinguo.model.Question;
-import com.andj.HelpLinguo.model.Tag;
-import com.andj.HelpLinguo.model.User;
-import com.andj.HelpLinguo.model.UserInfo;
+import com.andj.HelpLinguo.model.*;
 import com.andj.HelpLinguo.service.QuestionService;
 import com.andj.HelpLinguo.service.UserService;
 import com.andj.HelpLinguo.repository.UserInfoRepository;
@@ -118,6 +115,7 @@ public class LoginController {
         User user = userService.findUserByEmail(auth.getName());
         UserInfo userInfo = user.getUserInfo();
         List<Question> questions = questionService.findQuestionsByUser(user.getId());
+        List<Answer> answers = questionService.findAnswersByUser(user.getId());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         if (userInfo != null) {
             modelAndView.addObject("langInfo", "Your chosen languages are: " + userInfo.getLang1() + " and " + userInfo.getLang2() + ".");
@@ -137,6 +135,7 @@ public class LoginController {
         }
         modelAndView.addObject("flag", flag);
         modelAndView.addObject("ask", "Number of asked questions: " + questions.size());
+        modelAndView.addObject("answer", "Number of given answers: " + answers.size());
         modelAndView.setViewName("admin/home");
         return modelAndView;
     }
@@ -195,6 +194,7 @@ public class LoginController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         question.setUser(user);
+        question.setViews(0);
         questionService.saveQuestion(question);
         if (!tag1.equals("")) {
             Tag tag = new Tag();
@@ -233,11 +233,40 @@ public class LoginController {
 
     @RequestMapping(value="/admin/answer", method=RequestMethod.GET)
     public ModelAndView showAnswer(@RequestParam("id") int id) {
+        List<Answer> answers = questionService.findAllAnswersByQuestionId(id);
         Optional<Question> question = questionService.findById(id);
+        question.get().setViews(question.get().getViews() + 1);
+        questionService.saveQuestion(question.get());
+        Answer answer = new Answer();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("title", question.get().getTitle());
         modelAndView.addObject("question_text", question.get().getText());
+        modelAndView.addObject("answers", answers);
+        modelAndView.addObject("answer", answer);
+        modelAndView.addObject("id", id);
         modelAndView.setViewName("/admin/answer");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/answer", method=RequestMethod.POST)
+    public ModelAndView giveAnswer(@Valid Answer answer, @RequestParam("id") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        answer.setUser(user);
+        answer.setQuestion(questionService.findById(id).get());
+        questionService.saveAnswer(answer);
+        List<Answer> answers = questionService.findAllAnswersByQuestionId(id);
+        Optional<Question> question = questionService.findById(id);
+        question.get().setViews(question.get().getViews() + 1);
+        questionService.saveQuestion(question.get());
+        Answer answerNew = new Answer();
+        modelAndView.addObject("title", question.get().getTitle());
+        modelAndView.addObject("question_text", question.get().getText());
+        modelAndView.addObject("answers", answers);
+        modelAndView.addObject("answer", answerNew);
+        modelAndView.addObject("id", id);
+        modelAndView.setViewName("admin/answer");
         return modelAndView;
     }
 }

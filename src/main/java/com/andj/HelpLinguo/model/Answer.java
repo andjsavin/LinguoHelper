@@ -18,26 +18,19 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "question")
-public class Question {
+@Table(name = "answer")
+public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "question_id")
+    @Column(name = "answer_id")
     private int id;
-    @Column(name = "title")
-    private String title;
     @Column(name = "text", length = 20000)
     private String text;
-    @Column(name = "language")
-    private String language;
-    @Column(name = "views")
-    private int views;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private Set<Tag> tags;
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private Set<Answer> answers;
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 }

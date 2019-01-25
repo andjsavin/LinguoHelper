@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Admin Page</title>
+    <title>Home Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -38,10 +38,9 @@
                 <img style="float: right" th:src="${'../images/' + avatar}"/>
                 <p>Country: <img th:src="${'../images/' + flag}"/></p><br/>
                 <p th:utext="${langInfo}"></p><br/>
-                <p>English test passed: X</p><br/>
-                <p>Russian test passed: X</p><br/>
+                <p>Passed tests: English, Russian, Polish</p><br/>
                 <p th:utext="${ask}"></p><br/>
-                <p>Number of answered questions: 0</p><br/>
+                <p th:utext="${answer}"></p><br/>
                 <p>Favourite language: English</p><br/>
                 <p>Reputation: 0</p><br/>
             </div>
