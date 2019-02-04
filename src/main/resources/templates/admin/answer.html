@@ -48,8 +48,15 @@
             </div>
             <div th:if="${not #lists.isEmpty(answers)}">
                 <table class="table table-striped">
+                    <tr>
+                        <th>Answer</th>
+                        <th>By</th>
+                        <th>Up</th>
+                        <th>Down</th>
+                    </tr>
                     <tr th:each="a : ${answers}">
-                        <td th:utext="${a.text + '<br/>' + 'By ' + a.user.name + ' ' + a.user.lastName}"></td>
+                        <td th:text="${a.text}"></td>
+                        <td><a th:href = "@{/admin/user(id=${a.user.id})}" th:text="${a.user.name + ' ' + a.user.lastName}"></a></td>
                         <td width="15"><button type="submit"><i class="fas fa-arrow-up"></i></button>
                         </td>
                         <td width="15"><button type="submit"><i class="fas fa-arrow-down"></i></button>

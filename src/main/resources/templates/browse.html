@@ -55,7 +55,7 @@
                     <tr th:each="q : ${questions}">
                         <td><a th:href="@{/admin/answer(id=${q.question.id})}" th:text="${q.question.title}"></a></td>
                         <td th:text="${q.question.language}"></td>
-                        <td th:text="${q.question.user.name + ' ' + q.question.user.lastName}"></td>
+                        <td><a th:href = "@{/admin/user(id=${q.question.user.id})}" th:text="${q.question.user.name + ' ' + q.question.user.lastName}"></a></td>
                         <td th:text="${q.tags}"></td>
                         <td th:text="${q.question.views}"></td>
                     </tr>

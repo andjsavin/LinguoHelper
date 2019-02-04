@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/admin/home}">Home</a>
+    <a th:href="@{/browse}">Browse Questions</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/contact}">Contact</a>
+    <a th:href="@{/admin/info}">Update Info</a>
+    <a th:href="@{/admin/messages}">Messages</a>
+    <div class="search-container">
+        <form action="#" th:action="@{/search}" method="post">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+<div class="container">
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span>English Test</span>
+            </div>
+            <div class="panel-body">
+                <div></div>
+                <label>Test question 1</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 2</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 3</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 4</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 5</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 6</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 7</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 8</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 9</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 10</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 11</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 12</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 13</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 14</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 15</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 16</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 17</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 18</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 19</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+                <div></div>
+                <label>Test question 20</label><br/>
+                <input type="radio" name="editList" value="a">Answer a
+                <input type="radio" name="editList" value="b">Answer b
+                <input type="radio" name="editList" value="c">Answer c
+                <input type="radio" name="editList" value="d">Answer d
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

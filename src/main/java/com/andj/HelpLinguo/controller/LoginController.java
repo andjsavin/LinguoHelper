@@ -140,6 +140,38 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/admin/user", method = RequestMethod.GET)
+    public ModelAndView userInfo(@RequestParam("id") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findById(id).get();
+        UserInfo userInfo = user.getUserInfo();
+        List<Question> questions = questionService.findQuestionsByUser(user.getId());
+        List<Answer> answers = questionService.findAnswersByUser(user.getId());
+        modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+        if (userInfo != null) {
+            modelAndView.addObject("langInfo", "Your chosen languages are: " + userInfo.getLang1() + " and " + userInfo.getLang2() + ".");
+        } else {
+            modelAndView.addObject("langInfo", "No information provided yet");
+        }
+        if (userInfo != null) {
+            modelAndView.addObject("avatar", userInfo.getAvatar());
+        }
+        String flag = "";
+        if (user.getCountry().equals("Ukraine")) {
+            flag = "ukr.png";
+        } else if (user.getCountry().equals("Poland")) {
+            flag = "pol.png";
+        } else if (user.getCountry().equals("England")) {
+            flag = "en.png";
+        }
+        modelAndView.addObject("flag", flag);
+        modelAndView.addObject("ask", "Number of asked questions: " + questions.size());
+        modelAndView.addObject("answer", "Number of given answers: " + answers.size());
+        modelAndView.setViewName("admin/user");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/browse", method = RequestMethod.GET)
     public ModelAndView browse() {
         ModelAndView modelAndView = new ModelAndView();
@@ -245,6 +277,20 @@ public class LoginController {
         modelAndView.addObject("answer", answer);
         modelAndView.addObject("id", id);
         modelAndView.setViewName("/admin/answer");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/messages", method=RequestMethod.GET)
+    public ModelAndView showMessages() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/messages");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/test", method=RequestMethod.GET)
+    public ModelAndView test() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/test");
         return modelAndView;
     }
 
