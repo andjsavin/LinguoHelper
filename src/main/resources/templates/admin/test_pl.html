@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/admin/home_pl}">Domowa strona</a>
+    <a th:href="@{/browse_pl}">Oglądaj pytania</a>
+    <a th:href="@{/about_pl}">O nas</a>
+    <a th:href="@{/contact_pl}">Kontakt</a>
+    <a th:href="@{/admin/info_pl}">Aktualizuj informacje</a>
+    <a th:href="@{/admin/messages_pl}">Wiadomości</a>
+    <a th:href="@{/pl}">Pol</a>
+    <a th:href="@{/}">Eng</a>
+    <div class="search-container">
+        <form action="#" th:action="@{/search}" method="post">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <a th:href="@{/logout}">Wyloguj</a>
+</div>
+<div class="container">
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span>Test Angielski</span>
+            </div>
+            <div class="panel-body">
+                <div></div>
+                <label>Zapytanie 1</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 2</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 3</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 4</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 5</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 6</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 7</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 8</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 9</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 10</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 11</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 12</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 13</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 14</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 15</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 16</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 17</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 18</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 19</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+                <div></div>
+                <label>Zapytanie 20</label><br/>
+                <input type="radio" name="editList" value="a">Odpowiedź a
+                <input type="radio" name="editList" value="b">Odpowiedź b
+                <input type="radio" name="editList" value="c">Odpowiedź c
+                <input type="radio" name="editList" value="d">Odpowiedź d
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

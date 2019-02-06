@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Registration</title>
+    <title>Rejestracja</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,14 +11,14 @@
 </head>
 <body>
 <div class="topnav">
-    <a class="active" th:href="@{/admin/home}">Home</a>
-    <a th:href="@{/browse}">Browse Questions</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
+    <a class="active" th:href="@{/admin/home_pl}">Domowa strona</a>
+    <a th:href="@{/browse_pl}">Oglądaj pytania</a>
+    <a th:href="@{/about_pl}">O nas</a>
+    <a th:href="@{/contact_pl}">Kontakt</a>
     <a th:href="@{/pl}">Pol</a>
     <a th:href="@{/}">Eng</a>
     <div class="search-container">
-        <form action="#" th:action="@{/search}" method="post">
+        <form action="#" th:action="@{/search_pl}" method="post">
             <input type="text" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
@@ -27,23 +27,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form autocomplete="off" action="#" th:action="@{/registration}"
+            <form autocomplete="off" action="#" th:action="@{/registration_pl}"
                   th:object="${user}" method="post" class="form-horizontal"
                   role="form">
-                <h2>Registration Form</h2>
+                <h2>Forma rejestracji</h2>
                 <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
                        class="validation-message"></label>
-                <input type="text" th:field="*{name}" placeholder="Name"
+                <input type="text" th:field="*{name}" placeholder="Imię"
                        class="form-control"/>
 
                 <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                        class="validation-message"></label>
                 <input type="text" th:field="*{lastName}"
-                       placeholder="Last Name" class="form-control"/>
+                       placeholder="Nazwisko" class="form-control"/>
                 <select th:field="*{country}" class="form-control">
-                    <option th:value="England">England</option>
-                    <option th:value="Poland">Poland</option>
-                    <option th:value="Ukraine">Ukraine</option>
+                    <option th:value="England">Anglia</option>
+                    <option th:value="Poland">Polska</option>
+                    <option th:value="Ukraine">Ukraina</option>
                 </select><br/>
                 <label
                         th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
@@ -51,13 +51,12 @@
                 <input type="text" th:field="*{email}" placeholder="Email"
                        class="form-control"/>
                 <input type="password" th:field="*{password}"
-                       placeholder="Password" class="form-control"/> <label
+                       placeholder="Hasło" class="form-control"/> <label
                     th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
                     class="validation-message"></label>
 
-                <button type="submit" class="btn btn-primary btn-block">Register User</button>
-                <button type="submit" th:formaction="@{/}" formmethod="GET" class="btn btn-md btn-warning btn-block">Go
-                    To Login Page
+                <button type="submit" class="btn btn-primary btn-block">Zarejestruj użytkownika</button>
+                <button type="submit" th:formaction="@{/}" formmethod="GET" class="btn btn-md btn-warning btn-block">Wróć do strony logowania
                 </button>
                 <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
 

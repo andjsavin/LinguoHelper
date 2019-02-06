@@ -13,14 +13,14 @@
 
 <body>
 <div class="topnav">
-    <a class="active" th:href="@{/admin/home}">Home</a>
-    <a th:href="@{/browse}">Browse Questions</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
+    <a class="active" th:href="@{/admin/home_pl}">Domowa strona</a>
+    <a th:href="@{/browse_pl}">Oglądaj pytania</a>
+    <a th:href="@{/about_pl}">O nas</a>
+    <a th:href="@{/contact_pl}">Kontakt</a>
     <a th:href="@{/pl}">Pol</a>
     <a th:href="@{/}">Eng</a>
     <div class="search-container">
-        <form action="#" th:action="@{/search}" method="post">
+        <form action="#" th:action="@{/search_pl}" method="post">
             <input type="text" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
@@ -28,20 +28,20 @@
 </div>
 <div class="gc">
     <div class="container" id="login_form">
-        <form th:action="@{/landing}" method="POST" class="form-signin">
+        <form th:action="@{/landing_pl}" method="POST" class="form-signin">
             <br/>
             <input type="text" id="email" name="email" th:placeholder="Email"
                    class="form-control"/> <br/>
-            <input type="password" th:placeholder="Password"
+            <input type="password" th:placeholder="Hasło"
                    id="password" name="password" class="form-control"/> <br/>
 
             <div align="center" th:if="${param.error}">
-                <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+                <p style="font-size: 20; color: #FF1C19;">Email lub hasło jest niepoprawne, sprobuj jeszcze raz.</p>
             </div>
             <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
-                    th:text="Login"></button>
-            <button class="btn btn-md btn-warning btn-block" type="Submit" th:formaction="@{/registration}"
-                    formmethod="GET">Register
+                    th:text="Zaloguj"></button>
+            <button class="btn btn-md btn-warning btn-block" type="Submit" th:formaction="@{/registration_pl}"
+                    formmethod="GET">Zarejestruj się
             </button>
         </form>
         </form>

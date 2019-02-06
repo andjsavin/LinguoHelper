@@ -27,7 +27,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Controller
-public class LoginController {
+public class PolLoginController {
 
     public class QuestTag {
         public Question question;
@@ -38,36 +38,36 @@ public class LoginController {
     private UserService userService;
     @Autowired
     private QuestionService questionService;
-    @RequestMapping(value = {"/", "/landing"}, method = RequestMethod.GET)
-    public ModelAndView login() {
+    @RequestMapping(value = {"/pl", "/landing_pl"}, method = RequestMethod.GET)
+    public ModelAndView loginPL() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("landing");
+        modelAndView.setViewName("landing_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public ModelAndView registration() {
+    @RequestMapping(value = "/registration_pl", method = RequestMethod.GET)
+    public ModelAndView registrationPL() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("registration");
+        modelAndView.setViewName("registration_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/info", method = RequestMethod.GET)
-    public ModelAndView info() {
+    @RequestMapping(value = "/admin/info_pl", method = RequestMethod.GET)
+    public ModelAndView infoPL() {
         ModelAndView modelAndView = new ModelAndView();
         UserInfo userInfo = new UserInfo();
         modelAndView.addObject("userInfo", userInfo);
-        modelAndView.setViewName("admin/info");
+        modelAndView.setViewName("admin/info_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/info", method = RequestMethod.POST)
-    public ModelAndView updateInfo(@Valid UserInfo userInfo, BindingResult bindingResult) {
+    @RequestMapping(value = "/admin/info_pl", method = RequestMethod.POST)
+    public ModelAndView updateInfoPL(@Valid UserInfo userInfo, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("admin/info");
+            modelAndView.setViewName("admin/info_pl");
         } else {
             userService.saveUserInfo(userInfo);
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -81,46 +81,46 @@ public class LoginController {
             if (u != null) {
                 userService.deleteUserInfo(u);
             }
-            modelAndView.addObject("successMessage", "Updated succesfully");
+            modelAndView.addObject("successMessage", "Aktualizacja zakończona sukcesem");
             modelAndView.addObject("user_info", new UserInfo());
         }
         return modelAndView;
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    @RequestMapping(value = "/registration_pl", method = RequestMethod.POST)
+    public ModelAndView createNewUserPL(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+                            "Użytkownik z podanym adresem e-mail już jest zarejestrowany");
         }
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("registration_pl");
         } else {
             userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("successMessage", "Użytkownik został zarejestrowany");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("registration_pl");
 
         }
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
-    public ModelAndView home() {
+    @RequestMapping(value = "/admin/home_pl", method = RequestMethod.GET)
+    public ModelAndView homePL() {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         UserInfo userInfo = user.getUserInfo();
         List<Question> questions = questionService.findQuestionsByUser(user.getId());
         List<Answer> answers = questionService.findAnswersByUser(user.getId());
-        modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+        modelAndView.addObject("userName", "Witamy " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         if (userInfo != null) {
-            modelAndView.addObject("langInfo", "Your chosen languages are: " + userInfo.getLang1() + " and " + userInfo.getLang2() + ".");
+            modelAndView.addObject("langInfo", "Twoje obrane języki: " + userInfo.getLang1() + " i " + userInfo.getLang2() + ".");
         } else {
-            modelAndView.addObject("langInfo", "No information provided yet");
+            modelAndView.addObject("langInfo", "Informacja nie została wprowadzona");
         }
         if (userInfo != null) {
             modelAndView.addObject("avatar", userInfo.getAvatar());
@@ -134,14 +134,14 @@ public class LoginController {
             flag = "en.png";
         }
         modelAndView.addObject("flag", flag);
-        modelAndView.addObject("ask", "Number of asked questions: " + questions.size());
-        modelAndView.addObject("answer", "Number of given answers: " + answers.size());
-        modelAndView.setViewName("admin/home");
+        modelAndView.addObject("ask", "Ilość zadanych pytań: " + questions.size());
+        modelAndView.addObject("answer", "Ilość danych odpoweidzi: " + answers.size());
+        modelAndView.setViewName("admin/home_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/user", method = RequestMethod.GET)
-    public ModelAndView userInfo(@RequestParam("id") int id) {
+    @RequestMapping(value = "/admin/user_pl", method = RequestMethod.GET)
+    public ModelAndView userInfoPL(@RequestParam("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findById(id).get();
@@ -150,9 +150,9 @@ public class LoginController {
         List<Answer> answers = questionService.findAnswersByUser(user.getId());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         if (userInfo != null) {
-            modelAndView.addObject("langInfo", "Your chosen languages are: " + userInfo.getLang1() + " and " + userInfo.getLang2() + ".");
+            modelAndView.addObject("langInfo", "Twoje obrane języki: " + userInfo.getLang1() + " i " + userInfo.getLang2() + ".");
         } else {
-            modelAndView.addObject("langInfo", "No information provided yet");
+            modelAndView.addObject("langInfo", "Informacja nie została wprowadzona");
         }
         if (userInfo != null) {
             modelAndView.addObject("avatar", userInfo.getAvatar());
@@ -166,14 +166,14 @@ public class LoginController {
             flag = "en.png";
         }
         modelAndView.addObject("flag", flag);
-        modelAndView.addObject("ask", "Number of asked questions: " + questions.size());
-        modelAndView.addObject("answer", "Number of given answers: " + answers.size());
-        modelAndView.setViewName("admin/user");
+        modelAndView.addObject("ask", "Ilość zadanych pytań: " + questions.size());
+        modelAndView.addObject("answer", "Ilość danych odpoweidzi: " + answers.size());
+        modelAndView.setViewName("admin/user_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/browse", method = RequestMethod.GET)
-    public ModelAndView browse() {
+    @RequestMapping(value = "/browse_pl", method = RequestMethod.GET)
+    public ModelAndView browsePL() {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
@@ -181,9 +181,9 @@ public class LoginController {
         List<String> tags = new ArrayList<String>();
         List<QuestTag> questTags = new ArrayList<QuestTag>();
         if (user != null) {
-            modelAndView.addObject("info", "<a href=\"/admin/info\">Update Info</a>");
-            modelAndView.addObject("messages", " <a href=\"/admin/messages\">Messages</a>");
-            modelAndView.addObject("logout", " <a href=\"/logout\">Logout</a>");
+            modelAndView.addObject("info", "<a href=\"/admin/info_pl\">Aktualizuj informacje</a>");
+            modelAndView.addObject("messages", " <a href=\"/admin/messages_pl\">Wiadomości</a>");
+            modelAndView.addObject("logout", " <a href=\"/logout\">Wyloguj</a>");
         } else {
             modelAndView.addObject("info");
             modelAndView.addObject("messages");
@@ -202,12 +202,12 @@ public class LoginController {
             questTags.add(questTag);
         }
         modelAndView.addObject("questions", questTags);
-        modelAndView.setViewName("browse");
+        modelAndView.setViewName("browse_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/ask", method = RequestMethod.GET)
-    public ModelAndView showAsk() {
+    @RequestMapping(value = "/admin/ask_pl", method = RequestMethod.GET)
+    public ModelAndView showAskPL() {
         ModelAndView modelAndView = new ModelAndView();
         Question question = new Question();
         modelAndView.addObject("question", question);
@@ -216,12 +216,12 @@ public class LoginController {
         modelAndView.addObject("tag3");
         modelAndView.addObject("tag4");
         modelAndView.addObject("tag5");
-        modelAndView.setViewName("admin/ask");
+        modelAndView.setViewName("admin/ask_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/ask", method = RequestMethod.POST)
-    public ModelAndView ask(@Valid Question question, @RequestParam("tag1") String tag1, @RequestParam("tag2") String tag2, @RequestParam("tag3") String tag3, @RequestParam("tag4") String tag4, @RequestParam("tag5") String tag5) {
+    @RequestMapping(value = "/admin/ask_pl", method = RequestMethod.POST)
+    public ModelAndView askPL(@Valid Question question, @RequestParam("tag1") String tag1, @RequestParam("tag2") String tag2, @RequestParam("tag3") String tag3, @RequestParam("tag4") String tag4, @RequestParam("tag5") String tag5) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
@@ -258,13 +258,13 @@ public class LoginController {
             tag.setQuestion(question);
             questionService.saveTag(tag);
         }
-        modelAndView.addObject("successMessage", "Question created succesfully");
-        modelAndView.setViewName("admin/ask");
+        modelAndView.addObject("successMessage", "Pytanie zostało zadane");
+        modelAndView.setViewName("admin/ask_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/answer", method=RequestMethod.GET)
-    public ModelAndView showAnswer(@RequestParam("id") int id) {
+    @RequestMapping(value="/admin/answer_pl", method=RequestMethod.GET)
+    public ModelAndView showAnswerPL(@RequestParam("id") int id) {
         List<Answer> answers = questionService.findAllAnswersByQuestionId(id);
         Optional<Question> question = questionService.findById(id);
         question.get().setViews(question.get().getViews() + 1);
@@ -276,26 +276,26 @@ public class LoginController {
         modelAndView.addObject("answers", answers);
         modelAndView.addObject("answer", answer);
         modelAndView.addObject("id", id);
-        modelAndView.setViewName("/admin/answer");
+        modelAndView.setViewName("/admin/answer_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/messages", method=RequestMethod.GET)
-    public ModelAndView showMessages() {
+    @RequestMapping(value="/admin/messages_pl", method=RequestMethod.GET)
+    public ModelAndView showMessagesPL() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("admin/messages");
+        modelAndView.setViewName("admin/messages_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/test", method=RequestMethod.GET)
-    public ModelAndView test() {
+    @RequestMapping(value="/admin/test_pl", method=RequestMethod.GET)
+    public ModelAndView testPL() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("admin/test");
+        modelAndView.setViewName("admin/test_pl");
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/answer", method=RequestMethod.POST)
-    public ModelAndView giveAnswer(@Valid Answer answer, @RequestParam("id") int id) {
+    @RequestMapping(value="/admin/answer_pl", method=RequestMethod.POST)
+    public ModelAndView giveAnswerPL(@Valid Answer answer, @RequestParam("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
@@ -312,7 +312,7 @@ public class LoginController {
         modelAndView.addObject("answers", answers);
         modelAndView.addObject("answer", answerNew);
         modelAndView.addObject("id", id);
-        modelAndView.setViewName("admin/answer");
+        modelAndView.setViewName("admin/answer_pl");
         return modelAndView;
     }
 }

@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Messages</title>
+    <title>Wiadomości</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,12 +14,12 @@
 
 <body>
 <div class="topnav">
-    <a class="active" th:href="@{/admin/home}">Home</a>
-    <a th:href="@{/browse}">Browse Questions</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
-    <a th:href="@{/admin/info}">Update Info</a>
-    <a th:href="@{/admin/messages}">Messages</a>
+    <a class="active" th:href="@{/admin/home_pl}">Domowa strona</a>
+    <a th:href="@{/browse_pl}">Oglądaj pytania</a>
+    <a th:href="@{/about_pl}">O nas</a>
+    <a th:href="@{/contact_pl}">Kontakt</a>
+    <a th:href="@{/admin/info_pl}">Aktualizuj informacje</a>
+    <a th:href="@{/admin/messages_pl}">Wiadomości</a>
     <a th:href="@{/pl}">Pol</a>
     <a th:href="@{/}">Eng</a>
     <div class="search-container">
@@ -28,7 +28,7 @@
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
-    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/logout}">Wyloguj</a>
 </div>
 <div class="container">
 
@@ -37,23 +37,23 @@
             <div class="panel-heading">
                 <span th:utext="Messages"></span>
             </div>
-                <table class="table table-striped">
-                    <tr>
-                        <th>Message</th>
-                        <th>From</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th>Hello</th>
-                        <th>Andrii Savin</th>
-                        <th><td width="15"><button type="submit">Answer</button></th>
-                    </tr>
-                    <tr>
-                        <th>Another hello</th>
-                        <th>Andrzej Savin</th>
-                        <th><td width="15"><button type="submit">Answer</button></th>
-                    </tr>
-                </table>
+            <table class="table table-striped">
+                <tr>
+                    <th>Wiadomość</th>
+                    <th>Od</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Hello</th>
+                    <th>Andrii Savin</th>
+                    <th><td width="15"><button type="submit">Odpowiedz</button></th>
+                </tr>
+                <tr>
+                    <th>Another hello</th>
+                    <th>Andrzej Savin</th>
+                    <th><td width="15"><button type="submit">Odpowiedz</button></th>
+                </tr>
+            </table>
         </div>
     </div>
 </body>

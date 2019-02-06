@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Browse questions</title>
+    <title>Przeglądaj pytania</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,15 +13,15 @@
 
 <body>
 <div class="topnav">
-    <a class="active" th:href="@{/admin/home}">Home</a>
-    <a th:href="@{/browse}">Browse Questions</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
+    <a class="active" th:href="@{/admin/home_pl}">Domowa strona</a>
+    <a th:href="@{/browse_pl}">Oglądaj pytania</a>
+    <a th:href="@{/about_pl}">O nas</a>
+    <a th:href="@{/contact_pl}">Kontakt</a>
     <div th:remove="tag" th:utext="${info}"></div>
     <div th:remove="tag" th:utext="${messages}"></div>
-    <div th:remove="tag" th:utext="${logout}"></div>
     <a th:href="@{/pl}">Pol</a>
     <a th:href="@{/}">Eng</a>
+    <div th:remove="tag" th:utext="${logout}"></div>
     <div class="search-container">
         <form action="#" th:action="@{/search}" method="post">
             <input type="text" placeholder="Search.." name="search">
@@ -36,37 +36,37 @@
                 <span>Asked Questions</span>
                 <form>
                     <select>
-                        <option disabled selected="selected">Sort By</option>
-                        <option th:value="Views">Views</option>
-                        <option th:value="Language">Language</option>
-                        <option th:value="Answers">Answers</option>
-                        <option th:value="Date">Date</option>
+                        <option disabled selected="selected">Sortuj po</option>
+                        <option th:value="Views">Wyświetlenia</option>
+                        <option th:value="Language">Język</option>
+                        <option th:value="Answers">Odpowiedzi</option>
+                        <option th:value="Date">Data</option>
                     </select>
-                    <input type="submit" value="Sort">
+                    <input type="submit" value="Sortuj">
                 </form>
             </div>
             <div th:if="${not #lists.isEmpty(questions)}">
                 <table class="table table-striped">
                     <tr>
-                        <th>Title</th>
-                        <th>Language</th>
-                        <th>Asked by</th>
-                        <th>Tags</th>
-                        <th>Views</th>
+                        <th>Nazwa</th>
+                        <th>Język</th>
+                        <th>Zadano przez</th>
+                        <th>Znaczniki</th>
+                        <th>Wyświetlenia</th>
                     </tr>
                     <tr th:each="q : ${questions}">
-                        <td><a th:href="@{/admin/answer(id=${q.question.id})}" th:text="${q.question.title}"></a></td>
+                        <td><a th:href="@{/admin/answer_pl(id=${q.question.id})}" th:text="${q.question.title}"></a></td>
                         <td th:text="${q.question.language}"></td>
-                        <td><a th:href = "@{/admin/user(id=${q.question.user.id})}" th:text="${q.question.user.name + ' ' + q.question.user.lastName}"></a></td>
+                        <td><a th:href = "@{/admin/user_pl(id=${q.question.user.id})}" th:text="${q.question.user.name + ' ' + q.question.user.lastName}"></a></td>
                         <td th:text="${q.tags}"></td>
                         <td th:text="${q.question.views}"></td>
                     </tr>
                 </table>
             </div>
-            <form autocomplete="off" action="#" th:action="@{/admin/ask}"
+            <form autocomplete="off" action="#" th:action="@{/admin/ask_pl}"
                   method="get" class="form-horizontal"
                   role="form">
-                <input type="submit" class="btn btn-primary btn-block" value="Ask a question"/>
+                <input type="submit" class="btn btn-primary btn-block" value="Zadaj pytanie"/>
             </form>
         </div>
     </div>

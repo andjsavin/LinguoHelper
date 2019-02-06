@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Answers</title>
+    <title>Odpowiedzi</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,12 +14,12 @@
 
 <body>
 <div class="topnav">
-    <a class="active" th:href="@{/admin/home}">Home</a>
-    <a th:href="@{/browse}">Browse Questions</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
-    <a th:href="@{/admin/info}">Update Info</a>
-    <a th:href="@{/admin/messages}">Messages</a>
+    <a class="active" th:href="@{/admin/home_pl}">Domowa strona</a>
+    <a th:href="@{/browse_pl}">Oglądaj pytania</a>
+    <a th:href="@{/about_pl}">O nas</a>
+    <a th:href="@{/contact_pl}">Kontakt</a>
+    <a th:href="@{/admin/info_pl}">Aktualizuj informacje</a>
+    <a th:href="@{/admin/messages_pl}">Wiadomości</a>
     <a th:href="@{/pl}">Pol</a>
     <a th:href="@{/}">Eng</a>
     <div class="search-container">
@@ -28,14 +28,14 @@
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
-    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/logout}">Wyloguj</a>
 </div>
 <div class="container">
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <span th:utext="Question"></span>
+                <span th:utext="Zapytanie"></span>
             </div>
             <div class="panel-body">
                 <p>Title:</p>
@@ -46,19 +46,19 @@
         </div>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <span th:utext="Answers"></span>
+                <span th:utext="Odpowiedzi"></span>
             </div>
             <div th:if="${not #lists.isEmpty(answers)}">
                 <table class="table table-striped">
                     <tr>
-                        <th>Answer</th>
-                        <th>By</th>
-                        <th>Up</th>
-                        <th>Down</th>
+                        <th>Odpowiedź</th>
+                        <th>Przez</th>
+                        <th>+</th>
+                        <th>-</th>
                     </tr>
                     <tr th:each="a : ${answers}">
                         <td th:text="${a.text}"></td>
-                        <td><a th:href = "@{/admin/user(id=${a.user.id})}" th:text="${a.user.name + ' ' + a.user.lastName}"></a></td>
+                        <td><a th:href = "@{/admin/user_pl(id=${a.user.id})}" th:text="${a.user.name + ' ' + a.user.lastName}"></a></td>
                         <td width="15"><button type="submit"><i class="fas fa-arrow-up"></i></button>
                         </td>
                         <td width="15"><button type="submit"><i class="fas fa-arrow-down"></i></button>
@@ -69,15 +69,15 @@
         </div>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <span>Your Answer</span>
+                <span>Twoja odpowiedź</span>
             </div>
             <div class="panel-body" style="width: 100%; height: 100%; margin: 0 auto; padding: 0;">
-                <form autocomplete="off" action="#" th:action="@{/admin/answer(id=${id})}"
+                <form autocomplete="off" action="#" th:action="@{/admin/answer_pl(id=${id})}"
                       th:object="${answer}" method="post" class="form-horizontal"
                       role="form">
                         <textarea id="textArea" th:field="*{text}" placeholder="Text" class="form-control"
                                   rows="5"></textarea>
-                    <button type="submit" class="btn btn-primary btn-block">Answer</button>
+                    <button type="submit" class="btn btn-primary btn-block">Daj odpowiedź</button>
                 </form>
             </div>
         </div>

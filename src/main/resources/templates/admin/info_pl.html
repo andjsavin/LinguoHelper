@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Personal data</title>
+    <title>Dane osobiste</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,12 +11,12 @@
 </head>
 <body>
 <div class="topnav">
-    <a class="active" th:href="@{/admin/home}">Home</a>
-    <a th:href="@{/browse}">Browse Questions</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
-    <a th:href="@{/admin/info}">Update Info</a>
-    <a th:href="@{/admin/messages}">Messages</a>
+    <a class="active" th:href="@{/admin/home_pl}">Domowa strona</a>
+    <a th:href="@{/browse_pl}">Oglądaj pytania</a>
+    <a th:href="@{/about_pl}">O nas</a>
+    <a th:href="@{/contact_pl}">Kontakt</a>
+    <a th:href="@{/admin/info_pl}">Aktualizuj informacje</a>
+    <a th:href="@{/admin/messages_pl}">Wiadomości</a>
     <a th:href="@{/pl}">Pol</a>
     <a th:href="@{/}">Eng</a>
     <div class="search-container">
@@ -25,30 +25,30 @@
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
-    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/logout}">Wyloguj</a>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form autocomplete="off" action="#" th:action="@{/admin/info}"
+            <form autocomplete="off" action="#" th:action="@{/admin/info_pl}"
                   th:object="${userInfo}" method="post" class="form-horizontal"
                   role="form">
                 <h2>Info Form</h2>
                 <select th:field="*{lang1}" class="form-control">
-                    <option th:value="English">English</option>
-                    <option th:value="Polish">Polish</option>
-                    <option th:value="Russian">Russian</option>
-                    <option th:value="Ukrainian">Ukrainian</option>
+                    <option th:value="English">Angielski</option>
+                    <option th:value="Polish">Polski</option>
+                    <option th:value="Russian">Rosyjski</option>
+                    <option th:value="Ukrainian">Ukraiński</option>
                 </select><br/>
                 <select th:field="*{lang2}" class="form-control">
-                    <option th:value="English">English</option>
-                    <option th:value="Polish">Polish</option>
-                    <option th:value="Russian">Russian</option>
-                    <option th:value="Ukrainian">Ukrainian</option>
+                    <option th:value="English">Angielski</option>
+                    <option th:value="Polish">Polski</option>
+                    <option th:value="Russian">Rosyjski</option>
+                    <option th:value="Ukrainian">Ukraiński</option>
                 </select><br/>
                 <input type="file" th:field="*{avatar}"
-                       placeholder="Choose image" class="form-control"/>
-                <button type="submit" class="btn btn-primary btn-block">Update Info</button>
+                       placeholder="Wybierz plik" class="form-control"/>
+                <button type="submit" class="btn btn-primary btn-block">Aktualizuj informacje</button>
 
                 <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
 
